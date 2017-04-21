@@ -13,12 +13,14 @@ public class Ball : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
 
-		Launch ();
+		rigidBody.useGravity = false;
+		//Launch (launchVelocity);
 	}
 
-	public void Launch ()
+	public void Launch (Vector3 velocity)
 	{
-		rigidBody.velocity = launchVelocity;
+		rigidBody.useGravity = true;
+		rigidBody.velocity = velocity;
 		audioSource.Play ();
 	}
 }
