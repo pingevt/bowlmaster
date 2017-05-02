@@ -4,16 +4,7 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour {
 
-	public float standingThreshold = 3.0f;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
+	public float standingThreshold = 5.0f;
 
 	public bool IsStanding() {
 
@@ -22,8 +13,8 @@ public class Pin : MonoBehaviour {
 		float tiltInx = Mathf.Abs( rotationInEuler.x );
 		float tiltInz = Mathf.Abs( rotationInEuler.z );
 
-		if (rotationInEuler.x <= (standingThreshold) || rotationInEuler.x >= (360 - standingThreshold)) {
-			if (rotationInEuler.z <= (standingThreshold) || rotationInEuler.z >= (360 - standingThreshold)) {
+		if (tiltInx <= (standingThreshold) || tiltInx >= (360 - standingThreshold)) {
+			if (tiltInz <= (standingThreshold) || tiltInz >= (360 - standingThreshold)) {
 				return true;
 			}
 		}
