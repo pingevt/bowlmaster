@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 135252717526195554}
   - component: {fileID: 23266225161192654}
   - component: {fileID: 54762325368785310}
-  - component: {fileID: 114093181923223358}
   - component: {fileID: 82304978818472528}
+  - component: {fileID: 114093181923223358}
   - component: {fileID: 114537687780037930}
   m_Layer: 0
   m_Name: Ball
@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchVelocity: {x: -2, y: 0, z: 1500}
+  inPlay: 0
 --- !u!114 &114537687780037930
 MonoBehaviour:
   m_ObjectHideFlags: 1
