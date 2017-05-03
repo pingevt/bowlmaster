@@ -37,11 +37,8 @@ public class PinSetter : MonoBehaviour {
 	void OnTriggerExit(Collider collider) {
 		GameObject thingLeft = collider.gameObject;
 
-		Pin parentPin = thingLeft.GetComponentInParent<Pin> ();
-
-		if ( parentPin ) {
-			Debug.Log ("Prepare to be destroyed");
-			Destroy (parentPin.gameObject);
+		if ( thingLeft.GetComponent<Pin> () ) {
+			Destroy (thingLeft);
 		}
 	}
 

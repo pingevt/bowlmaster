@@ -10,7 +10,7 @@ public class Pin : MonoBehaviour {
 
 		Vector3 rotationInEuler = transform.eulerAngles;
 
-		float tiltInx = Mathf.Abs( rotationInEuler.x );
+		float tiltInx = Mathf.Abs( 270 - rotationInEuler.x );
 		float tiltInz = Mathf.Abs( rotationInEuler.z );
 
 		if (tiltInx <= (standingThreshold) || tiltInx >= (360 - standingThreshold)) {
