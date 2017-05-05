@@ -40,9 +40,9 @@ public class Pin : MonoBehaviour {
 
 	public void Lower() {
 		if (IsStanding ()) {
-			rigidBody.isKinematic = true;
+			rigidBody.isKinematic = false;
 			transform.Translate (new Vector3 (0, 0, -distanceToRaise));
-			rigidBody.useGravity = false;
+			rigidBody.useGravity = true;
 		}
 	}
 }
