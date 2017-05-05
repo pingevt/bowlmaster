@@ -5,6 +5,14 @@ using UnityEngine;
 public class Pin : MonoBehaviour {
 
 	public float standingThreshold = 5.0f;
+	public float distanceToRaise = 40f;
+
+	private Rigidbody rigidBody;
+
+	// Use this for initialization
+	void Start () {
+		rigidBody = GetComponent<Rigidbody> ();
+	}
 
 	public bool IsStanding() {
 
@@ -20,5 +28,21 @@ public class Pin : MonoBehaviour {
 		}
 
 		return false;
+	}
+
+	public void Raise() {
+		if (IsStanding ()) {
+			rigidBody.isKinematic = true;
+			transform.Translate (new Vector3 (0, 0, distanceToRaise));
+			rigidBody.useGravity = false;
+		}
+	}
+
+	public void Lower() {
+		if (IsStanding ()) {
+			rigidBody.isKinematic = true;
+			transform.Translate (new Vector3 (0, 0, -distanceToRaise));
+			rigidBody.useGravity = false;
+		}
 	}
 }
