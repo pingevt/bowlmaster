@@ -7,6 +7,7 @@ public class PinSetter : MonoBehaviour {
 
 	public int lastStandingCount = -1;
 	public Text standingDisplay;
+	public float distanceToRaise = 40f;
 
 	private Ball ball;
 	private float lastChangedTime;
@@ -83,5 +84,43 @@ public class PinSetter : MonoBehaviour {
 			standingDisplay.color = Color.red;
 			ballEnteredBox = true;
 		}
+	}
+
+	public void RaisePins () {
+		//raise standing pins only by distance To Raise;
+		Debug.Log("Raising Pins");
+
+		Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
+
+		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
+			if (pin.IsStanding ()) {
+				Vector3 pos = pin.transform.position;
+				pos.y += distanceToRaise;
+
+				pin.transform.position = pos;
+				pin.GetComponent<Rigidbody> ().useGravity = false;
+			}
+		}
+	}
+
+	public void LowerPins () {
+		//raise standing pins only by distance To Raise;
+		Debug.Log("Lowering Pins");
+
+		Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
+
+		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
+			if (pin.IsStanding ()) {
+				Vector3 pos = pin.transform.position;
+				pos.y -= distanceToRaise;
+
+				pin.transform.position = pos;
+				pin.GetComponent<Rigidbody> ().useGravity = true;
+			}
+		}
+	}
+
+	public void RenewPins () {
+		Debug.Log("Renewing Pins");
 	}
 }
