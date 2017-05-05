@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour {
 	public Vector3 launchVelocity;
-
 	public  bool inPlay = false;
 
 	private Rigidbody rigidBody;
@@ -27,7 +26,6 @@ public class Ball : MonoBehaviour {
 	}
 
 	public void Reset() {
-
 		inPlay = false;
 		rigidBody.transform.position = ballStartPos;
 		rigidBody.useGravity = false;

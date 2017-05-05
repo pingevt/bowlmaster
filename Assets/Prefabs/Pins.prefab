@@ -349,7 +349,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1898759340054716}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1829}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -935,7 +935,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571987539213490}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -949,7 +949,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1527581556013944}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -963,7 +963,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885021056714124}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -977,7 +977,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1863678635244524}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -991,7 +991,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165995991139962}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1005,7 +1005,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1295789303303456}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1019,7 +1019,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1034955672545358}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1033,7 +1033,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1432418172581508}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1047,7 +1047,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483919788739774}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1061,7 +1061,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897698714574688}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8780fcfbbf1214ff1ab3ba049461a676, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1081,6 +1081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114120350351519042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1093,6 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114236432934297596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1105,6 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114241940059478970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1117,6 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114302899408618576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1129,6 +1133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114426525567941916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1141,6 +1146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114611508774486832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1153,6 +1159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114641314231585412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1165,6 +1172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114658192947840340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1177,6 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40
 --- !u!114 &114691369246409902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1189,3 +1198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 5
+  distanceToRaise: 40

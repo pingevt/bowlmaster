@@ -7,6 +7,7 @@ public class PinSetter : MonoBehaviour {
 
 	public int lastStandingCount = -1;
 	public Text standingDisplay;
+	public GameObject pinSet;
 
 	private Ball ball;
 	private float lastChangedTime;
@@ -22,12 +23,11 @@ public class PinSetter : MonoBehaviour {
 		standingDisplay.text = CountStanding ().ToString ();
 
 		if (ballEnteredBox) {
-			CheckStanding ();
+			UpdateStandingCountAndSettle ();
 		}
 	}
 
-	void CheckStanding() {
-		// Update the lastStandingCount
+	void UpdateStandingCountAndSettle() {
 		int currentStanding = CountStanding();
 
 		if ( currentStanding != lastStandingCount) {
@@ -35,7 +35,6 @@ public class PinSetter : MonoBehaviour {
 			lastStandingCount = currentStanding;
 			return;
 		}
-
 
 		// Call PinsHaveSettled() when they have.
 		float settleTime = 3f;
@@ -52,10 +51,7 @@ public class PinSetter : MonoBehaviour {
 	}
 
 	int CountStanding() {
-
 		int standing = 0;
-
-		Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
 
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
 			if (pin.IsStanding ()) {
@@ -66,30 +62,11 @@ public class PinSetter : MonoBehaviour {
 		return standing;
 	}
 
-	void OnTriggerExit(Collider collider) {
-		GameObject thingLeft = collider.gameObject;
-
-		if ( thingLeft.GetComponent<Pin> () ) {
-			Destroy (thingLeft);
-		}
-	}
-
-	void OnTriggerEnter(Collider collider) {
-
-		GameObject thingHit = collider.gameObject;
-
-		// Ball enters play box.
-		if (thingHit.GetComponentInChildren<Ball> ()) {
-			standingDisplay.color = Color.red;
-			ballEnteredBox = true;
-		}
-	}
-
 	public void RaisePins () {
 		//raise standing pins only by distance To Raise;
 		Debug.Log("Raising Pins");
 
-		Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
+		//Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
 
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
 			if (pin.IsStanding ()) {
@@ -102,7 +79,7 @@ public class PinSetter : MonoBehaviour {
 		//raise standing pins only by distance To Raise;
 		Debug.Log("Lowering Pins");
 
-		Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
+		//Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
 
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
 			if (pin.IsStanding ()) {
@@ -113,5 +90,23 @@ public class PinSetter : MonoBehaviour {
 
 	public void RenewPins () {
 		Debug.Log("Renewing Pins");
+
+		GameObject newPins = Instantiate (pinSet);
+		newPins.transform.position += new Vector3 (0, (40f + 5f), 0);
+
+		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
+			pin.GetComponent<Rigidbody> ().isKinematic = true;
+			pin.GetComponent<Rigidbody> ().useGravity = false;
+		}
+	}
+
+	void OnTriggerEnter(Collider collider) {
+		GameObject thingHit = collider.gameObject;
+
+		// Ball enters play box.
+		if (thingHit.GetComponentInChildren<Ball> ()) {
+			standingDisplay.color = Color.red;
+			ballEnteredBox = true;
+		}
 	}
 }
