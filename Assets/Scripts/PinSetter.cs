@@ -11,11 +11,15 @@ public class PinSetter : MonoBehaviour {
 
 	private Ball ball;
 	private float lastChangedTime;
+	private int lastSettledCount = 10;
 	private bool ballEnteredBox = false;
+	private ActionMaster actionMaster = new ActionMaster ();
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
 		ball = GameObject.FindObjectOfType<Ball> ();
+		animator = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -44,6 +48,21 @@ public class PinSetter : MonoBehaviour {
 	}
 
 	void PinsHaveSettled() {
+		int pinFall = lastSettledCount - CountStanding ();
+		lastSettledCount = CountStanding ();
+
+		ActionMaster.Action action = actionMaster.Bowl (pinFall);
+		Debug.Log ("pinFall: " + pinFall + " Action: " + action);
+
+		if (action == ActionMaster.Action.Tidy) {
+			animator.SetTrigger ("tidyTrigger");
+		} else if (action == ActionMaster.Action.EndTurn || action == ActionMaster.Action.Reset) {
+			lastSettledCount = 10;
+			animator.SetTrigger ("resetTrigger");
+		} else if (action == ActionMaster.Action.EndGame) {
+			throw new UnityException ("Don't know how to handle end game yet");
+		}
+
 		ball.Reset ();
 		lastStandingCount = -1; // Indicates opins have settled
 		ballEnteredBox = false;
@@ -64,10 +83,6 @@ public class PinSetter : MonoBehaviour {
 
 	public void RaisePins () {
 		//raise standing pins only by distance To Raise;
-		Debug.Log("Raising Pins");
-
-		//Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
-
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
 			if (pin.IsStanding ()) {
 				pin.Raise ();
@@ -77,10 +92,6 @@ public class PinSetter : MonoBehaviour {
 
 	public void LowerPins () {
 		//raise standing pins only by distance To Raise;
-		Debug.Log("Lowering Pins");
-
-		//Pin[] pins = GameObject.FindObjectsOfType<Pin> ();
-
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
 			if (pin.IsStanding ()) {
 				pin.Lower ();
@@ -89,7 +100,6 @@ public class PinSetter : MonoBehaviour {
 	}
 
 	public void RenewPins () {
-		Debug.Log("Renewing Pins");
 
 		GameObject newPins = Instantiate (pinSet);
 		newPins.transform.position += new Vector3 (0, (40f + 5f), 0);

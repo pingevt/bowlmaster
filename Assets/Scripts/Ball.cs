@@ -32,4 +32,16 @@ public class Ball : MonoBehaviour {
 		rigidBody.velocity = Vector3.zero;
 		rigidBody.angularVelocity = Vector3.zero;
 	}
+
+	public void LaunchStriaght() { 
+		Launch(new Vector3 (0, 0, 600));
+	}
+	public void LaunchLeft() { 
+		Launch(new Vector3 (-10, 0, 600));
+		//Launch(new Vector3 (-20, 0, 600));
+	}
+	public void LaunchRight() { 
+		Launch(new Vector3 (10, 0, 600));
+		//Launch(new Vector3 (20, 0, 600));
+	}
 }
