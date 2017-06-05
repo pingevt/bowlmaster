@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
 
-	public int lastStandingCount = -1;
 	public Text standingDisplay;
 	public GameObject pinSet;
 
-	private Ball ball;
+	private bool ballOutOfPlay = false;
+	private int lastStandingCount = -1;
 	private float lastChangedTime;
 	private int lastSettledCount = 10;
-	private bool ballEnteredBox = false;
+
 	private ActionMaster actionMaster = new ActionMaster ();
+
+	private Ball ball;
 	private Animator animator;
 
 	// Use this for initialization
@@ -26,9 +28,14 @@ public class PinSetter : MonoBehaviour {
 	void Update () {
 		standingDisplay.text = CountStanding ().ToString ();
 
-		if (ballEnteredBox) {
+		if (ballOutOfPlay) {
 			UpdateStandingCountAndSettle ();
+			standingDisplay.color = Color.red;
 		}
+	}
+
+	public void SetBallOutOfPlay () {
+		ballOutOfPlay = true;
 	}
 
 	void UpdateStandingCountAndSettle() {
@@ -65,7 +72,7 @@ public class PinSetter : MonoBehaviour {
 
 		ball.Reset ();
 		lastStandingCount = -1; // Indicates opins have settled
-		ballEnteredBox = false;
+		ballOutOfPlay = false;
 		standingDisplay.color = Color.green;
 	}
 
@@ -107,16 +114,6 @@ public class PinSetter : MonoBehaviour {
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
 			pin.GetComponent<Rigidbody> ().isKinematic = true;
 			pin.GetComponent<Rigidbody> ().useGravity = false;
-		}
-	}
-
-	void OnTriggerEnter(Collider collider) {
-		GameObject thingHit = collider.gameObject;
-
-		// Ball enters play box.
-		if (thingHit.GetComponentInChildren<Ball> ()) {
-			standingDisplay.color = Color.red;
-			ballEnteredBox = true;
 		}
 	}
 }

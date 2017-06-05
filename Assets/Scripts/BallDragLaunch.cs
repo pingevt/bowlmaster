@@ -38,5 +38,17 @@ public class BallDragLaunch : MonoBehaviour {
 
 		ball.Launch (new Vector3 (launchSpeedX, 0, launchSpeedZ)*2);
 	}
-	 
+
+
+	public void LaunchStriaght() { 
+		ball.Launch(new Vector3 (0, 0, 600));
+	}
+	public void LaunchLeft() { 
+		ball.Launch(new Vector3 (-10, 0, 600));
+		//Launch(new Vector3 (-20, 0, 600));
+	}
+	public void LaunchRight() { 
+		ball.Launch(new Vector3 (10, 0, 600));
+		//Launch(new Vector3 (20, 0, 600));
+	}
 } 

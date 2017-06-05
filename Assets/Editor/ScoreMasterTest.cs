@@ -163,4 +163,10 @@ public class ActionMasterTest {
 		actionMaster.Bowl (10);
 		Assert.AreEqual (3, actionMaster.GetCurrentBowl ());
 	}
+
+	[Test]
+	public void T18ZeroOne() {
+		actionMaster.Bowl (0);
+		Assert.AreEqual (endTurn, actionMaster.Bowl (1));
+	}
 }
