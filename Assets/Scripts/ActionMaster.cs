@@ -9,8 +9,18 @@ public class ActionMaster {
 	private int[] bowls = new int[21];
 	private int bowl = 1;
 
+	public static Action NextAction (List<int> pinFalls) {
+		ActionMaster am = new ActionMaster();
+		Action currentAction = new Action();
 
-	public Action Bowl (int pins) {
+		foreach (int pinFall in pinFalls) {
+			currentAction = am.Bowl (pinFall);
+		}
+
+		return currentAction;
+	}
+	 
+	public Action Bowl (int pins) { // TODO make private
 
 		bowls[bowl - 1]= pins;
 

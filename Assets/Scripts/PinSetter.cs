@@ -91,18 +91,14 @@ public class PinSetter : MonoBehaviour {
 	public void RaisePins () {
 		//raise standing pins only by distance To Raise;
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
-			if (pin.IsStanding ()) {
-				pin.Raise ();
-			}
+			pin.Raise ();
 		}
 	}
 
 	public void LowerPins () {
 		//raise standing pins only by distance To Raise;
 		foreach (Pin pin in GameObject.FindObjectsOfType<Pin> ()) {
-			if (pin.IsStanding ()) {
-				pin.Lower ();
-			}
+			pin.Lower ();
 		}
 	}
 
